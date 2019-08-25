@@ -191,7 +191,16 @@ h2 a {
 		</tr>
 	</thead>
 	<tbody>
-              
+               <?php 
+                        include 'connect.php';
+               $bid = $_SESSION["bid"];
+                             $sql="select * from staff where branch = '$bid'"; 
+                                 $appresult = $conn->query($sql);
+                        if ($appresult->num_rows > 0) {
+                           
+                                <?php
+                                 }}  
+                              ?>
 	</tbody>
 </table>
         </div>
