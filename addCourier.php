@@ -1,4 +1,35 @@
+<?php
+include 'connect.php';
+session_start();
+if(!isset($_SESSION["uid"])){
+    header('Location:index.php');
+}
 
+
+$name =$email= $mobile=$address=$courierW=$courierA=$courierT="";
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    
+    if(isset($_POST["cname"])){
+       
+        
+            $name = $_POST["cname"];
+     $email = $_POST["cemail"];
+    $mobile = $_POST["cMob"];
+     $address = $_POST["cAdd"];
+     $courierW = $_POST["cWeight"];
+     $courierA = $_POST["cAmount"];
+      $courierT = $_POST["cType"];
+      $userId = $_SESSION['uid'];
+    $sql = "INSERT INTO courier (name,email,mobile,address,weight,amount,type,uid)
+VALUES ('$name', '$email', '$mobile','$address', '$courierW', '$courierA', '$courierT','$userId')";
+    echo '/n'.$sql;
+if ($conn->query($sql) === TRUE) {
+    header("Location:viewCouriers.php");
+}
+    }}
+
+
+?>
 
 
 <html>
