@@ -54,7 +54,14 @@ if ($conn->query($sql) === TRUE) {
 <link href="https://fonts.googleapis.com/css?family=Kodchasan" rel="stylesheet">
     </head>
     <body style=" background-image: url(images/bg2.jpg); background-repeat: no-repeat; background-size: cover;">
-   
+        <?php
+        // put your code here
+        include 'navBar.php';
+        include 'signinModals.php';
+        
+        
+        
+        ?>
      
         <div class="container" style="padding-top: 3%;">
             <div class="row justify-content-center" style="background-color: rgba(225,225,225,0.6); padding: 25px;">
