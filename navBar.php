@@ -1,3 +1,4 @@
+<link href="https://fonts.googleapis.com/css?family=Kodchasan" rel="stylesheet">
 
 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" style="box-shadow: 0px 3px 4px rgba(225, 225, 225, .6); font-family: 'Kodchasan', sans-serif;">
   <div class="container-fluid"> 
