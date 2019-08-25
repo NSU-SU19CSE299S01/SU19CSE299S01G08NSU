@@ -80,6 +80,11 @@ if(isset($_SESSION["uid"])){
      
   
   </div>
+              </div>
+           <p> contact us :</p>
+           <p> Name : H.M. Ashraful</p>
+            <p> Mobile:016xxxxxxx</p>
+    </div>
     
 </div> 
         
