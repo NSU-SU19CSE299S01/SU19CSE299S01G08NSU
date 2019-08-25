@@ -197,7 +197,31 @@ h2 a {
                              $sql="select * from staff where branch = '$bid'"; 
                                  $appresult = $conn->query($sql);
                         if ($appresult->num_rows > 0) {
-                           
+                            // output data of each row
+                             while($row = $appresult->fetch_assoc()) 
+                                 {
+                                 $id = $row['id'];
+                                $email=$row['email'];
+                                $name=$row['name'];
+                                $address=$row['address'];
+                                
+                                $mobile = $row['mobile'];
+
+                                ?>
+                                <tr>
+                                    <td><?php echo $id;?></td>
+                                    <td><?php echo $name;?></td>
+                                    <td><?php echo $email;?></td>
+                                    <td><?php echo $mobile;?></td>
+                                    <td><?php echo $address;?></td>
+                                            <td><form method="post" action="deleteStaff.php">
+                                        
+                                                    <input type="hidden" value="<?php echo $id;?>" name="sid">
+                                                    <button type="submit" class="btn btn-danger" ><span class="fa fa-trash" ></span></button>
+                                        </form></td>
+                                    
+                                    
+                                </tr>
                                 <?php
                                  }}  
                               ?>
