@@ -1,5 +1,11 @@
 
 
+<?php
+session_start();
+if(!isset($_SESSION["bid"])){
+    header('Location:index.php');
+}
+?>
 <html>
     <head>
         <meta charset="UTF-8">
