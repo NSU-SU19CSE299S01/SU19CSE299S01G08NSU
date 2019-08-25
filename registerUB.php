@@ -1,4 +1,25 @@
+<?php
 
+include 'connect.php';
+
+
+$name =$email= $password=$address="";
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    
+    if(isset($_POST["name"])){
+        
+        
+            $name = $_POST["name"];
+     $email = $_POST["email"];
+     $password = $_POST["password"];
+   
+    $sql = "INSERT INTO user (name,email,password)
+VALUES ('$name', '$email', '$password')";
+    echo '/n'.$sql;
+if ($conn->query($sql) === TRUE) {
+    
+    
+    ?>
 <html>
     <head>
         <link href="css/simpleGridTemplate.css" rel="stylesheet" type="text/css">
