@@ -146,7 +146,46 @@ h2 a {
 		</tr>
 	</thead>
 	<tbody>
-               
+               <?php 
+                        include 'connect.php';
+               $uid = $_SESSION["uid"];
+                             $sql="select * from courier "; 
+                                 $appresult = $conn->query($sql);
+                        if ($appresult->num_rows > 0) {
+                            // output data of each row
+                             while($row = $appresult->fetch_assoc()) 
+                                 {
+                                 $id = $row['id'];
+                                $email=$row['email'];
+                                $name=$row['name'];
+                                $address=$row['address'];
+                                $weight=$row['weight'];
+                                $amount=$row['amount'];
+                                $type=$row['type'];
+                                $status=$row['status'];
+                                $mobile = $row['mobile'];
+
+                                ?>
+                                <tr>
+                                    <td><?php echo $id;?></td>
+                                    <td><?php echo $name;?></td>
+                                    <td><?php echo $email;?></td>
+                                    <td><?php echo $mobile;?></td>
+                                    <td><?php echo $address;?></td>
+                                    <td><?php echo $weight;?></td>
+                                    <td><?php echo $amount;?></td>
+                                    <td><?php echo $type;?></td>
+                                    <td><?php if($status==1){
+                                        echo 'Delivered';
+                                    }else{
+                                       echo "not Delivered"; 
+                                    } ?></td>
+                                    
+                                    
+                                </tr>
+                                <?php
+                                 }}  
+                              ?>
 	</tbody>
 </table>
         </div>
