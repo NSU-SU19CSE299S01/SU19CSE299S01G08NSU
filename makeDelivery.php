@@ -5,7 +5,39 @@ if(!isset($_SESSION["bid"])){
 }
 ?>
 
+<?php
+include 'connect.php';
 
+
+$Dto =$Dby= $date=$branchId=$cId="";
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    
+    if(isset($_POST["cId"])){
+         
+        
+            $Dto = $_POST["dTo"];
+     $Dby = $_POST["dBy"];
+    $date = $_POST["dOn"];
+     $branchId = $_SESSION['bid'];
+     $cId = $_POST["cId"];
+    $sql = "INSERT INTO delivery (branch,deliveredTo,deliveredBy,datetime,courierId)
+VALUES ('$branchId', '$Dto', ' $Dby',' $date', '$cId')";
+    $conn->query($sql);
+    $sql ="update courier set status = '1' where id = '$cId';";
+    echo $sql ;
+    if($conn->query($sql)){
+        echo 'success';
+    }else{
+       echo("Error description: " . mysqli_error($conn));
+    }
+    
+
+//    header("Location:makeDelivery.php");
+
+    }}
+
+
+?>
 
 
 <html>
