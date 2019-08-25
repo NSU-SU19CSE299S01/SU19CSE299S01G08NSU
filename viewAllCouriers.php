@@ -23,7 +23,10 @@
 
     </head>
     <body>
-     
+        <?php
+        // put your code here
+        include 'navBar.php';
+         ?>
           <div class="container-fluid" style=" background-image: url(images/deli.jpg); background-repeat: no-repeat; background-size: cover; height: 100vh;">
          <style>
         <style>
