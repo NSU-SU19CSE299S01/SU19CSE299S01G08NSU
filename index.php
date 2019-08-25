@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 
-
+<?php
+session_start();
+if(isset($_SESSION["bid"])){
+    header('Location:BranchPage.php');
+    
+}
+if(isset($_SESSION["uid"])){
+    header('Location:UserPage.php');
+    
+}
+?>
+     
 
 <html>
     <head>
