@@ -1,6 +1,34 @@
 
 
+<?php
+include 'connect.php';
+session_start();
+if(!isset($_SESSION["bid"])){
+    header('Location:index.php');
+}
 
+$name =$email= $mobile=$address="";
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    
+    if(isset($_POST["sname"])){
+        echo 'reached post';
+         
+        
+            $name = $_POST["sname"];
+     $email = $_POST["semail"];
+    $mobile = $_POST["sMob"];
+     $address = $_POST["sAdd"];
+      $branchId = $_SESSION['bid'];
+    $sql = "INSERT INTO staff (name,branch,email,mobile,address)
+VALUES ('$name', '$branchId','$email', '$mobile','$address')";
+    echo '/n'.$sql;
+if ($conn->query($sql) === TRUE) {
+    header("Location:AddStaff.php");
+}
+    }}
+
+
+?>
 <html>
     <head>
         <meta charset="UTF-8">
