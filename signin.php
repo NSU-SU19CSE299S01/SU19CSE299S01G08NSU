@@ -1,4 +1,75 @@
+<?php
 
+
+include 'connect.php';
+
+if($_SERVER['REQUEST_METHOD']=='POST'){
+    
+  if(!isset($_POST['email']) || !isset($_POST['password'])){
+     $output = 'Please enter credentials!';
+     
+    }
+    
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    
+    
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) 
+{ //email validation
+    $output =  'Please enter a valid email!';
+   
+}
+																																		 
+if($conn->connect_error){
+        $output = 'Error connecting';
+  
+    }
+    
+    
+    $sqlU = "select * from user where email = '$email' and password = '$password';";
+     $sqlB = "select * from branch where email = '$email' and password = '$password';";
+     
+     
+     
+$resultU = $conn->query($sqlU);
+if ($resultU->num_rows > 0) {
+    // output data of each row
+     if($rowE = $resultU->fetch_assoc()) { 
+     
+     
+    
+    session_start();
+    $_SESSION["uid"]= $rowE["id"];
+    $_SESSION["login_user"]= $rowE["name"];
+ header('Location: UserPage.php');
+     
+    
+
+}}
+
+
+
+    $resultB = $conn->query($sqlB);
+    
+if ($resultB->num_rows > 0) {
+    // output data of each row
+     if($rowS = $resultB->fetch_assoc()) { 
+     
+     
+    
+    session_start();
+    $_SESSION["bid"]= $rowS["id"];
+    $_SESSION["login_branch"]= $rowS["name"];
+
+     
+header('Location: BranchPage.php');
+
+}}else{
+    $output = 'Invalid credentials!';
+    
+}
+
+    }?>
     <html>
     <head>
         <link href="css/simpleGridTemplate.css" rel="stylesheet" type="text/css">
