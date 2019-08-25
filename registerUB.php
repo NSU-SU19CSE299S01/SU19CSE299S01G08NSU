@@ -38,7 +38,31 @@
     </body>
 </html>
 
+<?php
+    $conn->close();
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
 
+        
+        
+    }
+    
+    if(isset($_POST["Bname"])){
+        
+        
+         $name = $_POST["Bname"];
+     $email = $_POST["Bemail"];
+     $password = $_POST["Bpassword"];
+      $address = $_POST["Badd"];
+        
+    $sql = "INSERT INTO Branch (name,email,password,address)
+VALUES ('$name', '$email', '$password','$address')";
+
+if ($conn->query($sql) === TRUE) {
+    
+    
+    ?>
 <html>
     <head>
         <link href="css/simpleGridTemplate.css" rel="stylesheet" type="text/css">
