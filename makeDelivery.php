@@ -280,7 +280,36 @@ h2 a {
 		</tr>
 	</thead>
 	<tbody>
+               <?php 
+                        include 'connect.php';
+               $bid = $_SESSION["bid"];
+                             $sql="select * from delivery where branch = '$bid'"; 
+                                 $appresult = $conn->query($sql);
+                        if ($appresult->num_rows > 0) {
+                            // output data of each row
+                             while($row = $appresult->fetch_assoc()) 
+                                 {
+                                 $id = $row['id'];
+                                $dto=$row['deliveredTo'];
+                                $dby=$row['deliveredBy'];
+                                $dt=$row['datetime'];
+                                
+                                $cid = $row['courierId'];
 
+                                ?>
+                                <tr>
+                                    <td><?php echo $id;?></td>
+                                    <td><?php echo $dto;?></td>
+                                    <td><?php echo $dby;?></td>
+                                    <td><?php echo $dt;?></td>
+                                    <td><?php echo $cid;?></td>
+                                   
+                                    
+                                    
+                                </tr>
+                                <?php
+                                 }}  
+                              ?>
 	</tbody>
 </table>
         </div>
